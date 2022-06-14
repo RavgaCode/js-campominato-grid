@@ -34,20 +34,19 @@ let bombArray = bombGenerator(bombNumber, minRange, maxRange);
 console.log(bombArray);
 
 // Creo un array dove inserire i numeri inseriti dall'utente, se rispettano le condizioni, e interrompo il gioco qualora trovasse un numero bomba
-let userArray = [];
-while (userArray.length < maxRange - bombNumber) {
+let gameContinues = true;
+while ((gameContinues = true)) {
+  let userArray = [];
   // Chiedo all'utente un numero
-  let userNumber = prompt(
-    `Scegli un numero compreso tra ${minRange} e ${maxRange}`
+  let userNumber = parseInt(
+    prompt(`Scegli un numero compreso tra ${minRange} e ${maxRange}`)
   );
 
   if (bombArray.includes(userNumber)) {
-    console.log("BOOOOM!!! Hai Perso!!");
+    alert("BOOOOM!!! Hai Perso!!");
+    gameContinues = false;
     break;
-  } else if (
-    !userArray.includes(userNumber) &&
-    !bombArray.includes(userNumber)
-  ) {
+  } else if (!userArray.includes(userNumber)) {
     userArray.push(userNumber);
     console.log(userArray);
   }
