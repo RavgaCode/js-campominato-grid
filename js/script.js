@@ -7,13 +7,13 @@ const minRange = 1;
 let maxRange;
 
 if (gameDifficulty === 1) {
-  maxRange = 100;
+  maxRange = 10;
 } else if (gameDifficulty === 2) {
   maxRange = 81;
 } else if (gameDifficulty === 3) {
   maxRange = 49;
 }
-const bombNumber = 16;
+const bombNumber = 8;
 // Imposto una funzione che crei un array di numeri bomba, in base al numero di bombe e range di numeri
 const bombGenerator = function (bombNumber, minRange, maxRange) {
   let bombArray = [];
@@ -35,15 +35,21 @@ console.log(bombArray);
 
 // Creo un array dove inserire i numeri inseriti dall'utente, se rispettano le condizioni, e interrompo il gioco qualora trovasse un numero bomba
 let gameContinues = true;
+let userArray = [];
+const winningScore = maxRange - minRange - bombNumber + 1;
 while ((gameContinues = true)) {
-  let userArray = [];
+  if (userArray.length === winningScore) {
+    alert("Congratulazioni!! Hai vinto!!");
+    gameContinues = false;
+    break;
+  }
   // Chiedo all'utente un numero
   let userNumber = parseInt(
     prompt(`Scegli un numero compreso tra ${minRange} e ${maxRange}`)
   );
 
   if (bombArray.includes(userNumber)) {
-    alert("BOOOOM!!! Hai Perso!!");
+    alert(`BOOOOM!!! Hai Perso!! Il tuo punteggio è: ${userArray.length}`);
     gameContinues = false;
     break;
   } else if (!userArray.includes(userNumber)) {
