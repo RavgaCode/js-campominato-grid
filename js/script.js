@@ -7,13 +7,13 @@ const minRange = 1;
 let maxRange;
 
 if (gameDifficulty === 1) {
-  maxRange = 10;
+  maxRange = 100;
 } else if (gameDifficulty === 2) {
   maxRange = 81;
 } else if (gameDifficulty === 3) {
   maxRange = 49;
 }
-const bombNumber = 8;
+const bombNumber = 16;
 // Imposto una funzione che crei un array di numeri bomba, in base al numero di bombe e range di numeri
 const bombGenerator = function (bombNumber, minRange, maxRange) {
   let bombArray = [];
